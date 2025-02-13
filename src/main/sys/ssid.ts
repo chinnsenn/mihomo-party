@@ -43,8 +43,12 @@ export async function checkSSID(): Promise<void> {
     if (currentSSID && pauseSSID.includes(currentSSID)) {
       console.log(`[SSID Check] Matched SSID: ${currentSSID}, switching to direct mode`)
       // 关闭虚拟网卡
-      await patchControledMihomoConfig({ mode: 'direct', tun: { enable: false } })
-      await patchMihomoConfig({ mode: 'direct' })
+      await patchControledMihomoConfig({
+        mode: 'direct',
+        dns: { enable: false },
+        tun: { enable: false }
+      })
+      await patchMihomoConfig({ mode: 'direct', dns: { enable: false } })
       try {
         await triggerSysProxy(false)
         await patchAppConfig({ sysProxy: { enable: false } })
@@ -56,8 +60,12 @@ export async function checkSSID(): Promise<void> {
       ipcMain.emit('updateTrayMenu')
     } else {
       console.log(`[SSID Check] No matched SSID, switching to rule mode`)
-      await patchControledMihomoConfig({ mode: 'rule', tun: { enable: true } })
-      await patchMihomoConfig({ mode: 'rule' })
+      await patchControledMihomoConfig({
+        mode: 'rule',
+        dns: { enable: true },
+        tun: { enable: true }
+      })
+      await patchMihomoConfig({ mode: 'rule', dns: { enable: true } })
       try {
         await triggerSysProxy(true)
         await patchAppConfig({ sysProxy: { enable: true } })
