@@ -36,16 +36,21 @@ nsis:
   perMachine: true
   createDesktopShortcut: always
 mac:
+  icon: build/icon.icns
+  category: public.app-category.developer-tools
   target:
     - pkg
     - dmg
   entitlementsInherit: build/entitlements.mac.plist
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  identity: null
   extendInfo:
     - NSCameraUsageDescription: Application requests access to the device's camera.
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
     - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
-  notarize: true
+  notarize: false
   artifactName: ${name}-macos-${version}-${arch}.${ext}
 pkg:
   allowAnywhere: false
