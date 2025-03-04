@@ -325,7 +325,7 @@ async function setPublicDNS(): Promise<void> {
   }
 }
 
-async function recoverDNS(): Promise<void> {
+export async function recoverDNS(): Promise<void> {
   if (process.platform !== 'darwin') return
   if (net.isOnline()) {
     const { originDNS } = await getAppConfig()
