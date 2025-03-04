@@ -29,17 +29,12 @@ sudo rm -rf "/Applications/Mihomo Party.app"
 sudo cp -R "dist/mac-$ARCH_FLAG/Mihomo Party.app" "/Applications/"
 
 # 设置权限
-<<<<<<< HEAD
-=======
-echo ``
->>>>>>> 755bf48 (新建本地构建脚本,修改版本号)
 echo "Setting permissions..."
 cd dist/mac-$ARCH_FLAG || exit 1
 sudo chown root:admin "/Applications/Mihomo Party.app/Contents/Resources/sidecar/mihomo"
 sudo chown root:admin "/Applications/Mihomo Party.app/Contents/Resources/sidecar/mihomo-alpha"
 sudo chmod +s "/Applications/Mihomo Party.app/Contents/Resources/sidecar/mihomo"
 sudo chmod +s "/Applications/Mihomo Party.app/Contents/Resources/sidecar/mihomo-alpha"
-<<<<<<< HEAD
 
 # 安装 helper 服务
 echo "Installing helper service..."
@@ -100,20 +95,9 @@ cd ../..
 # 最终打包
 echo "Final packaging..."
 bun build:mac --$ARCH_FLAG
-=======
-cd ../..
-
-# 最终打包
-# echo "Final packaging..."
-# bun build:mac --$ARCH_FLAG
->>>>>>> 755bf48 (新建本地构建脚本,修改版本号)
 
 echo "Build completed! Check the dist directory for the output files."
 echo "Generated files:"
 ls -l dist/*.{dmg,pkg,sha256} 2>/dev/null
 
-<<<<<<< HEAD
 exit 0
-=======
-exit 0
->>>>>>> 755bf48 (新建本地构建脚本,修改版本号)
